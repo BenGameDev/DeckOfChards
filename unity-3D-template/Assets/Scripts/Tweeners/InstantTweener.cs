@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class InstantTweener : MonoBehaviour
+public class InstantTweener : MonoBehaviour, IObjectTweener
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void IObjectTweener.MoveTo(Transform transform, Vector3 targetPosition)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.position = targetPosition;
     }
 }

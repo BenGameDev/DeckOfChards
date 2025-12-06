@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,7 +45,10 @@ public abstract class Piece : MonoBehaviour
 
     public virtual void MovePiece(Vector2Int coords)
     {
-
+        Vector3 targetPosition = board.CalculatePositionFromCoords(coords);
+        occupiedSquare = coords;
+        hasMoved = true;
+        tweener.MoveTo(transform, targetPosition);
     }
 
     protected void TryToAddMove(Vector2Int coords)
@@ -61,4 +65,40 @@ public abstract class Piece : MonoBehaviour
 
     }
 
+    public bool IsAttackingPieceOfType<T>() where T : Piece
+    {
+        foreach(var square in availableMoves)
+        {
+            if(board.GetPieceOnSquare(square) is T)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected Piece GetPieceInDirection<T>(TeamColour team, Vector2Int direction) where T : Piece  
+    {
+        for (int i = 1; i <= Board.BOARD_SIZE; i++)
+        {
+            Vector2Int nextCoords = occupiedSquare + direction * i;
+            Piece piece = board.GetPieceOnSquare(nextCoords);
+            if(!board.CheckIfCoordiantesAreOnBoard(nextCoords))
+            {
+                return null;
+            }
+            if(piece != null)
+            {
+                if (piece.team != team || !(piece is T))
+                {
+                    return null;
+                }
+                else if(piece.team == team && piece is T)
+                {
+                    return piece;
+                }
+            }
+        }
+        return null;
+    }
 }

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 439312}
   - component: {fileID: 3340028}
   - component: {fileID: 2380346}
-  - component: {fileID: -1487485190678077485}
   - component: {fileID: -1334789896086489702}
   - component: {fileID: -7342592499290572890}
+  - component: {fileID: 6369144704527184761}
+  - component: {fileID: 7501773149249243598}
   m_Layer: 0
   m_Name: Bishop
   m_TagString: Untagged
@@ -89,18 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-1487485190678077485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf617c7ba99c494cb4a6ee2bc1c8d0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-1334789896086489702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7b81bc4bc32954a8c303951553728a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshRenderer: {fileID: 0}
 --- !u!114 &-7342592499290572890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,3 +116,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialSetter: {fileID: 0}
   availableMoves: []
+--- !u!64 &6369144704527184761
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190264}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 1e1130c2d0732f44eb82b057a9dcf58b, type: 3}
+--- !u!114 &7501773149249243598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd3226014e73ff4c9576506c436a1db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3

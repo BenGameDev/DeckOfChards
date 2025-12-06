@@ -1,16 +1,7 @@
+using System;
 using UnityEngine;
 
-public class IObjectTweener : MonoBehaviour
+public interface IObjectTweener 
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    } 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    internal void MoveTo(Transform transform, Vector3 targetPosition);  
 }

@@ -31,7 +31,7 @@ MonoBehaviour:
   - position: {x: 6, y: 1}
     pieceType: 3
     teamColour: 1
-  - position: {x: 0, y: 0}
+  - position: {x: 7, y: 1}
     pieceType: 2
     teamColour: 1
   - position: {x: 8, y: 1}

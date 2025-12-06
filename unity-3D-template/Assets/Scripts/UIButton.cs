@@ -1,16 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIButton : MonoBehaviour
+[RequireComponent(typeof(UIInputReciever))]
+public class UIButton : Button
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private InputReciever reciever;
 
-    // Update is called once per frame
-    void Update()
+    protected override void Awake()
     {
-        
+        base.Awake();
+        reciever= GetComponent<UIInputReciever>();
+        onClick.AddListener(() => reciever.OnInputReceived());
     }
 }
