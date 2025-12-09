@@ -15,6 +15,7 @@ public class Board : MonoBehaviour
     private Piece selectedPiece;
     private ChessGameController chessController;
     private SquareSelectorCreator squareSelector;
+    public bool pieceMoved;
 
     private void Awake()
     {
@@ -91,11 +92,12 @@ public class Board : MonoBehaviour
 
     private void OnSelectedPieceMoved(Vector2Int coords, Piece piece)
     {
+        pieceMoved = true;
         TryToTakeOppositePiece(coords);
         UpdateBoardOnPieceMove(coords, piece.occupiedSquare, piece, null);
         selectedPiece.MovePiece(coords);
         DeselectPiece();
-        EndTurn();
+        chessController.endTurnButton.SetActive(true);
     }
 
     private void TryToTakeOppositePiece(Vector2Int coords)
@@ -116,10 +118,10 @@ public class Board : MonoBehaviour
         }
     }
 
-    private void EndTurn()
+    /*private void EndTurn()
     {
         chessController.EndTurn();
-    }
+    }*/
 
     public void UpdateBoardOnPieceMove(Vector2Int newCoords, Vector2Int oldCoords, Piece newPiece, Piece oldPiece)
     {
@@ -129,10 +131,13 @@ public class Board : MonoBehaviour
 
     private void SelectPiece(Piece piece)
     {
-        chessController.RemoveMovesEnablingAttackOnPieceOfType<King>(piece);
-        selectedPiece = piece;
-        List<Vector2Int> selection = selectedPiece.availableMoves;
-        ShowSelectionSquares(selection);
+        if (!pieceMoved)
+        {
+            chessController.RemoveMovesEnablingAttackOnPieceOfType<King>(piece);
+            selectedPiece = piece;
+            List<Vector2Int> selection = selectedPiece.availableMoves;
+            ShowSelectionSquares(selection);
+        }
     }
 
     private void ShowSelectionSquares(List<Vector2Int> selection)

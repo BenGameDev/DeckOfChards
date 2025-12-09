@@ -40,7 +40,11 @@ public abstract class Piece : MonoBehaviour
 
     public bool CanMoveTo(Vector2Int coords)
     {
-        return availableMoves.Contains(coords);
+        if (!board.pieceMoved)
+        {
+            return availableMoves.Contains(coords);
+        }
+        return false;
     }
 
     public virtual void MovePiece(Vector2Int coords)

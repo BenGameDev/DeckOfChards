@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PieceCreator))]
 public class ChessGameController : MonoBehaviour
@@ -11,6 +12,7 @@ public class ChessGameController : MonoBehaviour
     [SerializeField] private BoardLayout startingBoardLayout;
     [SerializeField] private Board board;
     [SerializeField] private ChessUIManager chessUIManager;
+    [SerializeField] public GameObject endTurnButton;
     
     private Camera whiteCamera;
     private Camera blackCamera;
@@ -118,16 +120,19 @@ public class ChessGameController : MonoBehaviour
         return activePlayer.team == team;
     }
 
-    internal void EndTurn()
+    public void EndTurn()
     {
         GenerateAllPossiblePlayerMoves(activePlayer);
         GenerateAllPossiblePlayerMoves(GetOpponentToPlayer(activePlayer));
         if(CheckIfGameIsFinished())
         {
+            endTurnButton.SetActive(false);
             EndGame();
         }
         else
         {
+            endTurnButton.SetActive(false);
+            board.pieceMoved = false;
             ChangeActiveTeam();
         }
     }
