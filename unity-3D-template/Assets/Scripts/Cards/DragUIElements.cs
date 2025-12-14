@@ -40,6 +40,6 @@ public class DragUIElements : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent.GetComponent<RectTransform>());
         rectTransform.SetSiblingIndex(siblingIndex);
-        this.GetComponent <LayoutElement>().ignoreLayout = false;
+        this.GetComponent<LayoutElement>().ignoreLayout = false;
     }
 }

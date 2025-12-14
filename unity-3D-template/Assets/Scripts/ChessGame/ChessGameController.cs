@@ -17,7 +17,7 @@ public class ChessGameController : MonoBehaviour
     private Camera whiteCamera;
     private Camera blackCamera;
     private PieceCreator pieceCreator;
-    private ChessPlayer whitePlayer, blackPlayer, activePlayer;
+    public ChessPlayer whitePlayer, blackPlayer, activePlayer;
     private GameState state;
     
     private void Awake()
@@ -110,7 +110,7 @@ public class ChessGameController : MonoBehaviour
 
     }
 
-    private void GenerateAllPossiblePlayerMoves(ChessPlayer player)
+    public void GenerateAllPossiblePlayerMoves(ChessPlayer player)
     {
         player.GenerateAllPossibleMoves();
     }
