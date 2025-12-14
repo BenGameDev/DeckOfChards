@@ -13,8 +13,8 @@ public class SetCard : MonoBehaviour
 
     private void Start()
     {
-        cardArt = this.transform.GetChild(1).GetComponent<Image>();
-        textDesc = this.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        cardArt = this.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>();
+        textDesc = this.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
